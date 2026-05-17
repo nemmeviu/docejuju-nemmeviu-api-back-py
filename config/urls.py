@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import path
 
 from catalog.views import ProductListView
@@ -11,6 +12,7 @@ admin.site.site_header = "Doce Juju — administração"
 admin.site.site_title = "Doce Juju"
 
 urlpatterns = [
+    path("api/health/", lambda r: JsonResponse({"status": "ok"}), name="api-health"),
     path("admin/", admin.site.urls),
     path("api/products/", ProductListView.as_view(), name="api-product-list"),
     path("api/orders/", OrderCreateView.as_view(), name="api-order-create"),

@@ -8,3 +8,4 @@ venv/
 .idea/
 .DS_Store
 config/settings.py
+media/
